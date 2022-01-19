@@ -6,6 +6,9 @@ from scipy.stats import norm
 BLOCK = False
 FIGURES_DIRECTORY = f"figures_fisher"
 
+if FIGURES_DIRECTORY not in os.listdir():
+    os.mkdir(FIGURES_DIRECTORY)
+
 
 def plotting_image(data_image, title=f"title", n_rows=1, n_cols=None):
 
@@ -21,7 +24,6 @@ def plotting_image(data_image, title=f"title", n_rows=1, n_cols=None):
 
     filepath_figure = os.path.join(FIGURES_DIRECTORY, title)
     plt.savefig(filepath_figure)
-
     plt.close("all")
 
     return fig, ax
@@ -34,9 +36,9 @@ def plotting_histograms_properties(dataset, specific_classes, title=f"Histograms
 
     for n, value_propriety_all_image_by_number in enumerate(dataset):
 
-        if n in [0, 1]:
+        if n in specific_classes[:2]:
             ax[0].hist(value_propriety_all_image_by_number, bins=35, density=True, alpha=0.5)
-        else:
+        elif n in specific_classes[2:]:
             ax[1].hist(value_propriety_all_image_by_number, bins=35, density=True, alpha=0.5)
 
     legend_handles_0 = [f"Class {n}" for n in specific_classes[:2]]

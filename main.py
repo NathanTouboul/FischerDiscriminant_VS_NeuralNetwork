@@ -31,7 +31,7 @@ def preprocessing(case, classes, retrieve_from_file=False):
         return feats_train, features_train_flat, features_test, features_test_flat, label_train, labels_test
 
 
-def fisher_main_intro(classes, pre=False):
+def fisher_main_intro(classes, retrieve_from_file=False):
 
     # PART A - Fisher Discriminant
     fisher_inst = fisher.FisherDiscriminant()
@@ -40,7 +40,7 @@ def fisher_main_intro(classes, pre=False):
     # Collecting feature pattern for two specific class
 
     # Dataset for each class
-    feats_train, _, label_train, _ = preprocessing(case, None, retrieve_from_file=pre)
+    feats_train, _, label_train, _ = preprocessing(case, None, retrieve_from_file=retrieve_from_file)
     features_train_class_1 = feats_train[label_train == classes[0], :, :]
     features_train_class_2 = feats_train[label_train == classes[1], :, :]
     features_train_class_3 = feats_train[label_train == classes[2], :, :]
@@ -180,6 +180,19 @@ def main_neural_network(classes=None):
 
 if __name__ == '__main__':
 
+    # Task A1 - Average and Threshold Images class 0 - 1 and class 5 - 6
+    print(f"Preprocessing and Overview")
+    specific_classes = [0, 1, 5, 6]
+    fisher_class, features_train, labels_train, threshold = fisher_main_intro(specific_classes)
+
+    # Task A2 - All relevant properties 0 - 1 and class 5 - 6
+    print(f"Studying relevant properties")
+    fisher_main_hist_props(fisher_class, specific_classes, features_train, labels_train, threshold)
+
+    # Task A3 - Computing Discriminants
+    print(f"Computing Discriminants")
+    fisher_main_discriminant(fisher_class, specific_classes, features_train, labels_train)
+
     # Task B1 - Neural Network class 0 - 1
     print(f"TASK B1")
     specific_classes = [0, 1]
@@ -189,19 +202,3 @@ if __name__ == '__main__':
     print(f"TASK B2")
     specific_classes = [5, 6]
     main_neural_network(specific_classes)
-
-    pass
-
-    # Task A1 - Average and Threshold Images class 0 - 1 and class 5 - 6
-    print(f"Preprocessing and Overview")
-    specific_classes = [0, 1, 5, 6]
-    load_from_file = True
-    fisher_class, features_train, labels_train, threshold = fisher_main_intro(specific_classes, load_from_file)
-
-    # Task A2 - All relevant properties 0 - 1 and class 5 - 6
-    print(f"Studying relevant properties")
-    fisher_main_hist_props(fisher_class, specific_classes, features_train, labels_train, threshold)
-
-    # Task A3 - Computing Discriminants
-    print(f"Computing Discriminants")
-    fisher_main_discriminant(fisher_class, specific_classes, features_train, labels_train)

@@ -4,6 +4,8 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/dataset_neural_network" />
+      <excludeFolder url="file://$MODULE_DIR$/figures_fisher" />
+      <excludeFolder url="file://$MODULE_DIR$/figures_neural" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -18,6 +18,7 @@ class Preprocessing:
 
         self.retrieve_from_file = retrieve_from_file
         self.dataset_directory = f"dataset_{self.case}"
+
         if self.dataset_directory not in os.listdir():
             os.mkdir(self.dataset_directory)
 

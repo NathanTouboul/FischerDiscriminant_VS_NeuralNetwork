@@ -5,7 +5,7 @@ class NeuralNetwork:
 
     def __init__(self):
         self.learning_rate = 1
-        self.number_iterations = 500
+        self.number_iterations = 100
         self.decision_threshold = 0.5
 
     @staticmethod
@@ -82,7 +82,6 @@ class NeuralNetwork:
         dj_dw /= number_images
         cost /= number_images
 
-        assert(dj_db.dtype == float)
         assert(dj_dw.shape == weights.shape)
 
         cost = np.squeeze(cost)
@@ -94,7 +93,7 @@ class NeuralNetwork:
 
     def gradient_descent(self, weights, bias, features, labels):
         """
-        This function optimizes weights and biais by running a gradient descent algorithm
+        This function optimizes weights and bias by running a gradient descent algorithm
 
         Arguments:
         weights -- weights, a numpy array of size (num_px * num_px, 1)
@@ -134,7 +133,7 @@ class NeuralNetwork:
             bias = bias - self.learning_rate * dj_db
 
             # Record the costs
-            if iteration % 100 == 0:
+            if iteration % 10 == 0:
                 costs.append(cost)
                 # Print the cost every 100 training examples
                 print(f"Cost after iteration {iteration}: {cost}")

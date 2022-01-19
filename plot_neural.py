@@ -4,6 +4,9 @@ import os
 BLOCK = False
 FIGURES_DIRECTORY = f"figures_neural"
 
+if FIGURES_DIRECTORY not in os.listdir():
+    os.mkdir(FIGURES_DIRECTORY)
+
 
 def plot_cost(costs, weights, title=f"Evolution of the cost and final weights"):
 
