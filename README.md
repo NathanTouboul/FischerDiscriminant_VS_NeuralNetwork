@@ -1,6 +1,6 @@
-# FischerDiscriminant_VS_NeuralNetwork
+# Neural network from scratch vs Fisher's Discriminant
 
-## Coding a neural network from scratch - Comparing with a Fischer Discriminant
+## Coding a neural network from scratch
 
 Study of the MNIST handwritten digit database. This dataset is used for two different learning methods to classify the handwritten digits into their corresponding label.
  - Fisher discriminant between two classes to separate the images based on relevant features
@@ -24,7 +24,7 @@ From these images, we can extract features using measure from the skimage packag
 
 ![Image Caption](figures_fisher/convex_area.png)
 
-A decision can then be made using one or multiple property by Fischer Discriminant analysis
+A decision can then be made using one or multiple properties by Fisher Discriminant analysis
 
 ![Image Caption](figures_fisher/Histograms%20Discriminants.png)
 
@@ -35,7 +35,7 @@ Files:
 - neural.py: computation
 - plot_neural.py: plotting figures
 
-Implementing the equation of a simple neural network to discriminate between two digits. The idea is to have as little neuron as possible,
+Implementing the equation of a simple neural network to discriminate between two digits. The idea is to have as few neurons as possible,
 and optimize all other parameters (learning rate, number of epochs, activation functions, etc.) to increase the accuracy.
 
 ![Image Caption](figures_neural/Training%20for%20the%20classes%20%5B5,%206%5D.png)
